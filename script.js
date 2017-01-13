@@ -1,21 +1,29 @@
 $(document).ready(function(){
     
+    
+        
     $(".button").on("click", function(){
         
-        $.getJSON("https://got-quotes.herokuapp.com/quotes", function(json){
+        $.getJSON("http://imdbapi.poromenos.org/", function(val){
             
-          
-     
-            var test = JSON.stringify(json);
+           var key = JSON.stringify(val);
             
-          
-            
-            $(".quote").html(test);          
+            $(".picture").html(key);
         });
-    
+       
+        $.getJSON("https://got-quotes.herokuapp.com/quotes", function(json){
+           
+            var test = JSON.stringify(json.quote);
+            var char = JSON.stringify(json.character);
+            
+            $(".quote").html(test);
+            $(".name").html(char);
+        });
         
+
+
     });
     
-  
+    
     
 });
